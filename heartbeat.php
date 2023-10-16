@@ -1,9 +1,9 @@
 #!/usr/bin/php
 <?php
 
-include "./token.php";
-include "./mysql_coc.php";
-include "./write_log.php";
+include_once "./token.php";
+include_once "./mysql_coc.php";
+include_once "./write_log.php";
 
 // Globals
 
@@ -18,15 +18,17 @@ if ($prev_row['state'] != $new_row['state']){
     writeLog($conn, "New state!  Previous state: " . $prev_row['state'] . ", New state: " . $new_row['state']);
     switch($new_row['state']) {
         case 'preparation':
-            include "./config.php";
+            include_once "./config.php";
             chdir($update_path);
             // var_dump($currentwar);
-            include "./update_war_roster_log.php";
+            writeLog($conn, "call update_war_roster_log");
+            include_once "./update_war_roster_log.php";
             break;               
         case 'warEnded':
-            include "./config.php";
+            include_once "./config.php";
             chdir($update_path);
-            include "./update_war.php";
+            writeLog($conn, "call update_war");
+            include_once "./update_war.php";
             break;            
     }
 
