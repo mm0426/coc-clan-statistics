@@ -1,9 +1,9 @@
 #!/usr/bin/php
 <?php
-include "../write_log.php";
-include "../mysql_coc.php";
-include "../config.php";
-include "../token.php";
+include_once "../write_log.php";
+include_once "../mysql_coc.php";
+include_once "../config.php";
+include_once "../token.php";
 
 parse_str(implode('&', array_slice($argv, 1)), $_GET);
 if (isset($_GET['clanid'])) {

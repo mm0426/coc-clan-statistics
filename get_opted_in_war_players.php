@@ -26,27 +26,32 @@ $MyMinis = [
     [
         'name' => '-= Orz =-',
         'tag' => '#9PLJJPPRR',
-        'townHallLevel' => 12
+        'townHallLevel' => 12,
+        'skipped' => 0
     ],
     [
         'name' => '-= Yehat =-',
         'tag' => '#9QRRUR90R',
-        'townHallLevel' => 12        
+        'townHallLevel' => 12,
+        'skipped' => 0        
     ],
     [
         'name' => '-= Ilwrath =-',
         'tag' => '#9RYYJ20U2',
-        'townHallLevel' => 13        
+        'townHallLevel' => 13,
+        'skipped' => 0        
     ],
     [
         'name' => 'El Miguel',
         'tag' => '#LVUJULVV',
-        'townHallLevel' => 12             
+        'townHallLevel' => 12,
+        'skipped' => 0             
     ],
     [
         'name' => '--== Pkunk ==--',
         'tag' => '#8Q0U2CU2Y',
-        'townHallLevel' => 12
+        'townHallLevel' => 12,
+        'skipped' => 0
     ]
 ];
 
@@ -54,12 +59,14 @@ $sandbags = [
     [
         'name' => 'Tip1',
         'tag' => '#9CLVUCV2Y',
-        'townHallLevel' => 6
+        'townHallLevel' => 6,
+        'skipped' => 0
     ],
     [
         'name' => '-= Spathi =-',
         'tag' => '#9QV2LR898', 
-        'townHallLevel' => 6       
+        'townHallLevel' => 6,
+        'skipped' => 0       
     ]
 ];
 
@@ -231,7 +238,7 @@ function getExcludedMemberList($conn): array
 function getIncludedMemberList($conn): array
 {
     $result = [];
-    $sqlStatement = "SELECT tag, name, expires, reason, cwltoo from players_included_in_war;";
+    $sqlStatement = "SELECT tag, name, expires, reason, cwltoo from players_included_in_war where expires > now() or expires is null;";
     $check_result = mysqli_query($conn, $sqlStatement);
     if (mysqli_num_rows($check_result) == 0) {
         echo "function getIncludedMemberList:  No rows found in players_included_in_war table";

@@ -2,8 +2,8 @@
 <?php
 global $new_row;
 var_dump($currentwar);
-include "../mysql_coc.php";
-include "../write_log.php";
+include_once "../mysql_coc.php";
+include_once "../write_log.php";
 
 // parse_str(implode('&', array_slice($argv, 1)), $_GET);
 // $clanid = $_GET['clanid'];
